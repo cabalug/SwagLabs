@@ -7,11 +7,18 @@ describe('Login', () => {
     cy.contains('Products')
   })
 
-  it('Login with invalid password', () => {
+  it('Login with invalid credential', () => {
     cy.visit('https://www.saucedemo.com/v1/index.html')
     cy.get('#user-name').type('standard_user')
     cy.get('#password').type('invalid_password')
     cy.get('#login-button').click()
     cy.contains('Epic sadface: Username and password do not match any user in this service')
+  })
+
+  it('Login without username', () => {
+    cy.visit('https://www.saucedemo.com/v1/index.html')
+    cy.get('#password').type('invalid_password')
+    cy.get('#login-button').click()
+    cy.contains('Epic sadface: Username is required')
   })
 })
