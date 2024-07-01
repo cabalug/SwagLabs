@@ -21,4 +21,11 @@ describe('Login', () => {
     cy.get('#login-button').click()
     cy.contains('Epic sadface: Username is required')
   })
+
+  it('login without password', () => {
+    cy.visit('https://www.saucedemo.com/v1/index.html')
+    cy.get('#user-name').type('standard_user')
+    cy.get('#login-button').click()
+    cy.contains('Epic sadface: Password is required')
+  })  
 })
